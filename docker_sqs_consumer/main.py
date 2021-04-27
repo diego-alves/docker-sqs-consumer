@@ -1,7 +1,22 @@
 from json import loads
-from boto3 import resource
+from boto3 import resource, client
 
-sqs = resource('sqs') 
+from botocore.config import Config
+
+proxy_definitions = {
+    'http': 'http://pagseguro.proxy.srv.intranet:80',
+    'https': 'http://pagseguro.proxy.srv.intranet:80',
+}
+
+CONFIG = Config(
+  retries={
+    'max_attempts': 10,
+    'mode': 'standard',
+  },
+  proxies=proxy_definitions,
+)
+
+sqs = resource('sqs', config=CONFIG) 
 
 
 def main():
