@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "docker-sqs-consumer"
-version = "0.0.2"
+version = "0.0.4"
 description = ""
 authors = ["Diego Alves <dalves@pagseguro.com>"]
 license = "MIT"

@@ -4,8 +4,8 @@ from boto3 import resource, client
 from botocore.config import Config
 
 proxy_definitions = {
-    'http': 'http://pagseguro.proxy.srv.intranet:80',
-    'https': 'http://pagseguro.proxy.srv.intranet:80',
+    # 'http': '',
+    # 'https': '',
 }
 
 CONFIG = Config(
@@ -13,7 +13,7 @@ CONFIG = Config(
     'max_attempts': 10,
     'mode': 'standard',
   },
-  proxies=proxy_definitions,
+  # proxies=proxy_definitions,
 )
 
 sqs = resource('sqs', config=CONFIG) 
@@ -21,7 +21,7 @@ sqs = resource('sqs', config=CONFIG)
 
 def main():
   print("Start Consuming Queue")
-  queue = sqs.get_queue_by_name(QueueName="MyQueue")
+  queue = sqs.Queue("")
   while True:
     for message in queue.receive_messages():
       try:
