@@ -1,10 +1,12 @@
 
-from logging import info, warning, error
+from logging import info, warning, error, basicConfig, INFO
 from os import getenv
 from json import loads
 from boto3 import resource, client
 
 from botocore.config import Config
+
+basicConfig(level=INFO)
 
 PROXY = getenv("BOTO_PROXY",)
 QUEUE_URL = getenv("QUEUE_URL")
